@@ -9,3 +9,7 @@ drf-yasg
 docutils
 djangorestframework
 pytest-django
+djangorestframework-simplejwt 
+social-auth-app-django
+google-auth 
+google-auth-oauthlib

@@ -14,7 +14,7 @@ schema_view = get_schema_view(
         default_version='v1',
         description="API documentation for Notes application",
         terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact( email="aryansharma4844@gmail.com"),
+        contact=openapi.Contact(email="aryansharma4844@gmail.com"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,
@@ -25,6 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('api.urls')),
     path('', TemplateView.as_view(template_name='index.html')),
+    path('api/auth/', include('authentication.urls')),
+    path('auth/', include('social_django.urls', namespace='social')),
     
     # Swagger URLs
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
@@ -35,3 +37,4 @@ urlpatterns = [
     path('accounts/login/', admin.site.login, name='login'),
     path('accounts/logout/', LogoutView.as_view(), name='logout'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
